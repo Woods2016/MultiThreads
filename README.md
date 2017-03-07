@@ -1,2 +1,2 @@
 # MultiThreads
-练习Java并发的项目
+Java多线程代码笔记
