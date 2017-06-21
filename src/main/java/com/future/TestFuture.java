@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.concurrent.*;
 
 /**
- * @Description: 简单测试Future、Callable和Runnable
+ * @Description: 测试Future、Callable和Runnable
  * @Author: ZhOu
  * @Date: 2017/3/7
  */
