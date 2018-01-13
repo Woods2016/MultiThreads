@@ -16,6 +16,7 @@ public class ReadWriteLockTest {
     private static Lock readLock = reentrantReadWriteLock.readLock();
     private static Lock writeLock = reentrantReadWriteLock.writeLock();
     private int value;
+
     private Object handleRead(Lock lock) throws InterruptedException {
         Integer var2;
         try {
@@ -41,33 +42,27 @@ public class ReadWriteLockTest {
 
     public static void main(String[] args) {
         final ReadWriteLockTest readWriteLockTest = new ReadWriteLockTest();
-        Runnable readRunnable = new Runnable() {
-            public void run() {
-                try {
-                    readWriteLockTest.handleRead(ReadWriteLockTest.readLock);
-                } catch (InterruptedException var2) {
-                    var2.printStackTrace();
-                }
-
+        Runnable readRunnable = () -> {
+            try {
+                readWriteLockTest.handleRead(ReadWriteLockTest.readLock);
+            } catch (InterruptedException var2) {
+                var2.printStackTrace();
             }
         };
-        Runnable writeRunnable = new Runnable() {
-            public void run() {
-                try {
-                    readWriteLockTest.handleWrite(ReadWriteLockTest.writeLock, (new Random()).nextInt(10));
-                } catch (InterruptedException var2) {
-                    var2.printStackTrace();
-                }
-
+        Runnable writeRunnable = () -> {
+            try {
+                readWriteLockTest.handleWrite(ReadWriteLockTest.writeLock, (new Random()).nextInt(10));
+            } catch (InterruptedException var2) {
+                var2.printStackTrace();
             }
         };
 
         int i;
-        for(i = 0; i < 18; ++i) {
+        for (i = 0; i < 18; ++i) {
             (new Thread(readRunnable)).start();
         }
 
-        for(i = 18; i < 20; ++i) {
+        for (i = 18; i < 20; ++i) {
             (new Thread(writeRunnable)).start();
         }
 
