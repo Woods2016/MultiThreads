@@ -7,6 +7,10 @@ package com.callback;
  */
 public interface CallBack {
 
-    //回调函数
+    /**
+     * 回调函数
+     *
+     * @param param 提问
+     */
     void solve(String param);
 }

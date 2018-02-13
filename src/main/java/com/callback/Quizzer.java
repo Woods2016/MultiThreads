@@ -15,12 +15,8 @@ public class Quizzer implements CallBack {
 
     public void ask(String question) {
         System.out.println("开始提问");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                answerer.executeMsg(Quizzer.this, question);
-            }
-        }).start();
+        new Thread(() ->
+                answerer.executeMsg(Quizzer.this, question)).start();
 
         System.out.println("提问完毕，处理其他事情");
     }
