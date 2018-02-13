@@ -55,6 +55,7 @@ public class TestFuture {
                 e.printStackTrace();
             }
             return "result";
+
         });
 
         //等待2秒之后，主动中断任务
