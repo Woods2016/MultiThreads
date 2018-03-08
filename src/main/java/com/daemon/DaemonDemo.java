@@ -9,7 +9,7 @@ public class DaemonDemo {
 
 
     public static void main(String[] args) throws InterruptedException {
-        DaemonDemo.ThreadDaemon t = new DaemonDemo.ThreadDaemon();
+        ThreadDaemon t = new ThreadDaemon();
         t.setDaemon(true);
         t.start();
         Thread.sleep(2000L);

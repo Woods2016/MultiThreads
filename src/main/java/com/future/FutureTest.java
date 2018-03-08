@@ -9,7 +9,7 @@ import java.util.concurrent.*;
  * @Author: ZhOu
  * @Date: 2017/3/7
  */
-public class TestFuture {
+public class FutureTest {
     /**
      * 测试Runnable通过Future返回为空
      *

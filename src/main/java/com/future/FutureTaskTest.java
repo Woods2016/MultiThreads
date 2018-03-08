@@ -9,7 +9,7 @@ import java.util.concurrent.*;
  * @Author: ZhOu
  * @Date: 2017/3/7
  */
-public class TestFutureTask {
+public class FutureTaskTest {
 
     //使用Thread方式执行
     @Test
