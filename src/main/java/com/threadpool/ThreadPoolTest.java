@@ -3,7 +3,6 @@ package com.threadpool;
 import com.define.threadfactory.MyThreadFactory;
 import org.junit.Test;
 
-import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -24,7 +23,7 @@ public class ThreadPoolTest {
 //        ThreadPoolExecutor executor = new ThreadPoolExecutor(3, 6, 3, TimeUnit.SECONDS, new LinkedBlockingDeque<>(),new MyThreadFactory());
 
         //LinkedBlockingDeque 限制大小，核心线程占满后放入到队列中，队列占满之后会创建新的线程，任务量超过最大线程数时会抛出异常。
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(3, 6, 3, TimeUnit.SECONDS, new LinkedBlockingDeque<>(3), new MyThreadFactory());
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 5, TimeUnit.SECONDS, new LinkedBlockingDeque<>(5), new MyThreadFactory());
         Runnable myRunnable = () -> {
             try {
                 Thread.sleep(1000);
