@@ -19,7 +19,7 @@ public class CountDownLatchDemo implements Runnable {
     public void run() {
         try {
             Thread.sleep(new Random().nextInt(5000));
-            System.out.println("检查完毕");
+            System.out.println(Thread.currentThread().getName() + "检查完毕");
             //通知倒计时器，一个任务已经完成
             countDownLatch.countDown();
         } catch (InterruptedException e) {
