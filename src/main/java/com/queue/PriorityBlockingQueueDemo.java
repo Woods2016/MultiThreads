@@ -15,12 +15,33 @@ public class PriorityBlockingQueueDemo {
 
         BlockingQueue<PriorityTask> queue = new PriorityBlockingQueue<>();
         for (int i = 0; i < 10; i++) {
-            queue.add(new PriorityTask(new Random().nextInt(50) + 10, "Task" + i));
+            queue.add(new PriorityTask(new Random().nextInt(50), "Task" + i));
         }
 
         for (int i = 0; i < 10; i++) {
             PriorityTask task = queue.poll();
             System.out.println(task.toString());
         }
+    }
+}
+
+class PriorityTask implements Comparable<PriorityTask> {
+
+    private Integer priority;
+    private String name;
+
+    public PriorityTask(Integer priority, String name) {
+        this.priority = priority;
+        this.name = name;
+    }
+
+    @Override
+    public int compareTo(PriorityTask o) {
+        return o.priority.compareTo(this.priority);
+    }
+
+    @Override
+    public String toString() {
+        return "priority:" + priority + "\t name:" + name;
     }
 }
