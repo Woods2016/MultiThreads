@@ -9,10 +9,11 @@ import java.util.concurrent.Executors;
  * @Description:
  * @Author: ZhOu
  * @Date: 2017/7/4
+ *
  */
 public class CountDownLatchDemo implements Runnable {
 
-    static CountDownLatch countDownLatch = new CountDownLatch(10);
+    static CountDownLatch countDownLatch = new CountDownLatch(8);
     static CountDownLatchDemo downLatchDemo = new CountDownLatchDemo();
 
     @Override
@@ -36,5 +37,6 @@ public class CountDownLatchDemo implements Runnable {
         countDownLatch.await();
         System.out.println("发射");
         executorService.shutdown();
+
     }
 }
