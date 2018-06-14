@@ -20,10 +20,10 @@ public class ThreadPoolTest {
 //        ThreadPoolExecutor executor = new ThreadPoolExecutor(3, 6, 3, TimeUnit.SECONDS, new SynchronousQueue<>(), new MyThreadFactory());
 
         //LinkedBlockingDeque 没有大小限制，只重复使用核心线程，线程池中的数量等于核心线程数量，任务量超过最大线程数不会抛出异常。
-//        ThreadPoolExecutor executor = new ThreadPoolExecutor(3, 6, 3, TimeUnit.SECONDS, new LinkedBlockingDeque<>(),new MyThreadFactory());
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(3, 6, 3, TimeUnit.SECONDS, new LinkedBlockingDeque<>(), new MyThreadFactory());
 
         //LinkedBlockingDeque 限制大小，核心线程占满后放入到队列中，队列占满之后会创建新的线程，任务量超过最大线程数时会抛出异常。
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 5, TimeUnit.SECONDS, new LinkedBlockingDeque<>(5), new MyThreadFactory());
+//        ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 5, TimeUnit.SECONDS, new LinkedBlockingDeque<>(5), new MyThreadFactory());
         Runnable myRunnable = () -> {
             try {
                 Thread.sleep(1000);
@@ -36,12 +36,26 @@ public class ThreadPoolTest {
         executor.execute(myRunnable);
         executor.execute(myRunnable);
         executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
         System.out.println("---先开三个---\n");
         System.out.println("核心线程数" + executor.getCorePoolSize());
         System.out.println("线程池数" + executor.getPoolSize());
         System.out.println("队列任务数" + executor.getQueue().size());
         System.out.println("任务数" + executor.getTaskCount());
         System.out.println("已完成任务数" + executor.getCompletedTaskCount());
+        System.out.println("待执行任务数：" + executor.getActiveCount());
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
+        executor.execute(myRunnable);
         executor.execute(myRunnable);
         executor.execute(myRunnable);
         executor.execute(myRunnable);
@@ -58,6 +72,11 @@ public class ThreadPoolTest {
         System.out.println("队列任务数" + executor.getQueue().size());
         System.out.println("任务数" + executor.getTaskCount());
         System.out.println("已完成任务数" + executor.getCompletedTaskCount());
+
+
+        Thread.sleep(1000);
+
+        System.out.println("待执行任务数：" + executor.getActiveCount());
     }
 }
 
